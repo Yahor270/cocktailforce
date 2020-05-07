@@ -2,7 +2,8 @@
     <lightning-card title="Cocktail list" icon-name="custom:custom48">
         <template if:true={selectedCocktailWrapper}>
             <div class="slds-m-right_x-large">
-                <lightning-accordion class="cocktails-accordion">
+                <lightning-accordion class="cocktails-accordion"
+                allow-multiple-sections-open>
                     <template for:each={selectedCocktailWrapper} for:item="cocktail">
                         <lightning-accordion-section key={cocktail.info.Id} name= {cocktail.info.Name} label={cocktail.info.Name}>
                             <div class="slds-media slds-media_responsive">
