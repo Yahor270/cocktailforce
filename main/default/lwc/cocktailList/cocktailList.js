@@ -25,7 +25,7 @@ export default class CocktailList extends LightningElement {
     
     @api
     findCocktails(detail) {
-        if(detail.value) {
+        if(detail.value.length > 0) {
             this.selectedCocktailWrapper = [];
         } else {
             this.selectedCocktailWrapper = this.allCocktailWrapper;

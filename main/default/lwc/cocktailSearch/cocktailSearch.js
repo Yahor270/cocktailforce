@@ -31,7 +31,8 @@ export default class CocktailSearch extends LightningElement {
 
     clearList() {
         this.template.querySelector('lightning-dual-listbox').value = [];
-        const selectedEvent = new CustomEvent('selected', { detail: {}});
+        this.value = [];
+        const selectedEvent = new CustomEvent('selected', { detail: {value: [], strict: this.isSelected}});
         this.dispatchEvent(selectedEvent);
     }
 }

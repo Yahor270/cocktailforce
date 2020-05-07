@@ -16,18 +16,16 @@
                 onclick={clearList}
                 class="clearButton">
             </lightning-button-icon>
-            <div class="slds-m-top_medium slds-m-bottom_medium">
-                <p>Strict mode: cocktails ONLY with selected ingridients are listed.</p>
+            <div class="slds-m-top_medium slds-m-bottom_medium slds-text-body_small">
+                <lightning-button-icon-stateful 
+                    icon-name="utility:filterList" 
+                    selected={isSelected} 
+                    onclick={handleClick} 
+                    alternative-text="Strict mode" 
+                    class="slds-m-right_medium">
+                </lightning-button-icon-stateful>
+                Strict mode: cocktails ONLY with selected ingridients are listed
             </div>
-            <lightning-button-stateful
-                label-when-off="Strict mode OFF"
-                label-when-on="Strict mode ON"
-                icon-name-when-off="utility:bucket"
-                icon-name-when-on="utility:filterList"
-                selected={isSelected}
-                onclick={handleClick}
-                variant="brand">
-            </lightning-button-stateful> 
         </div>
     </lightning-card>                         
 </template>
