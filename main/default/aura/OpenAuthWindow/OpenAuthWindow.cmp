@@ -1,0 +1,10 @@
+<aura:component controller="QueryForToken" implements="flexipage:availableForAllPageTypes">
+    <aura:registerEvent name="gotInfo" type="c:gotInfo"/>
+    <aura:registerEvent name="gotMedia" type="c:gotMedia"/>
+    <aura:attribute name="code" type="String"/>
+    <aura:attribute name="contact" type="Contact"/>
+    <lightning:button label="Authorize" title="Authorize" onclick="{!c.openActionWindow}"/>
+    <aura:if isTrue="{!v.contact.TokenIsAlive__c}">
+        <lightning:button label="Show data" title="Show data" onclick="{!c.getData}"/>
+    </aura:if>
+</aura:component>
