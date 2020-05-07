@@ -1,8 +1,0 @@
-<design:component>
-    <design:attribute name="email" />
-    <design:attribute name="fname"  />
-    <design:attribute name="lname" />
-    <design:attribute name="password" />
-    <design:attribute name="hasOptedTracking" />
-    <design:attribute name="hasOptedSolicit" />
-</design:component>

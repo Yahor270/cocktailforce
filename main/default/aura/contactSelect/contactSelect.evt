@@ -1,4 +1,0 @@
-<aura:event type="COMPONENT">
-    <aura:attribute name="userInfo" type="Map"/>
-    <aura:attribute name="userMedia" type="String[]"/>
-</aura:event>
