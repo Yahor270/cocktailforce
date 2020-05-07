@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Select available items" icon-name="standard:product_required">
+        <div class="slds-m-left_x-large slds-m-right_x-large">
+            <lightning-dual-listbox id="Ingridients"
+                size = 10
+                label="Let's see what do you have..."
+                source-label="Ingridients list"
+                selected-label="Selected Ingridients"
+                options={options}
+                value={value}
+                onchange={handleChange}>
+            </lightning-dual-listbox>
+            <lightning-button-icon icon-name="utility:delete"    
+                alternative-text="Clear list"    
+                title="Clear list"
+                onclick={clearList}
+                class="clearButton">
+            </lightning-button-icon>
+        </div>
+    </lightning-card>                         
+</template>

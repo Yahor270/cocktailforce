@@ -1,0 +1,9 @@
+<template>
+  <lightning-card title="Search-O-Cocktail" icon-name="custom:custom56">
+    <p class="slds-m-left_x-large">Check out what cocktails can be mixed with ingridients you have.</p>
+    <div class="slds-grid slds-wrap">
+      <c-cocktail-search class="slds-large-size_1-of-2 slds-small-size_1-of-1" onselected={processEvent}></c-cocktail-search>
+      <c-cocktail-list class="slds-large-size_1-of-2 slds-small-size_1-of-1"></c-cocktail-list>
+    </div>
+  </lightning-card>   
+</template>
