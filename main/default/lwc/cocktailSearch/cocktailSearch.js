@@ -4,7 +4,14 @@ import getIngridientsList from '@salesforce/apex/CocktailController.getIngridien
 export default class CocktailSearch extends LightningElement {
     value = [];
     error;
+    isSelected = false;
     @wire(getIngridientsList) ingridients;
+
+    handleClick() {
+        this.isSelected = !this.isSelected;
+        const selectedEvent = new CustomEvent('selected', { detail: {value: this.value, strict: this.isSelected}});
+        this.dispatchEvent(selectedEvent);
+    }
 
     get options() {
         var returnOptions = [];
@@ -18,13 +25,13 @@ export default class CocktailSearch extends LightningElement {
 
     handleChange(e) {
         this.value = e.detail.value;
-        const selectedEvent = new CustomEvent('selected', { detail: this.value });
+        const selectedEvent = new CustomEvent('selected',  { detail: {value: this.value, strict: this.isSelected}});
         this.dispatchEvent(selectedEvent);
     }
 
     clearList() {
         this.template.querySelector('lightning-dual-listbox').value = [];
-        const selectedEvent = new CustomEvent('selected', { detail: []});
+        const selectedEvent = new CustomEvent('selected', { detail: {}});
         this.dispatchEvent(selectedEvent);
     }
 }

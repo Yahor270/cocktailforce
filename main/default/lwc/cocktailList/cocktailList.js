@@ -25,27 +25,48 @@ export default class CocktailList extends LightningElement {
     
     @api
     findCocktails(detail) {
-        if(detail.length > 0) {
+        if(detail.value) {
             this.selectedCocktailWrapper = [];
         } else {
             this.selectedCocktailWrapper = this.allCocktailWrapper;
             return;
         }
-        
-        this.allCocktailWrapper.forEach(element => {
-            if(this.arrayContainsArray(detail, element.info.ingridients)) {
-                this.selectedCocktailWrapper.push(element);
-            }
-        });
-        
+        if(detail.strict) {
+            console.log('is strict');
+            this.allCocktailWrapper.forEach(element => {
+                if(this.arrayContainsArray(detail.value, element.info.ingridients)) {
+                    this.selectedCocktailWrapper.push(element);
+                }
+            });
+        } else {
+            console.log('non strict');
+            this.allCocktailWrapper.forEach(element => {
+                if(this.arrayCrossesArray(element.info.ingridients, detail.value)) {
+                    this.selectedCocktailWrapper.push(element);
+                }
+            });
+        }
     }
     
     arrayContainsArray(superset, subset) {
-       if (0 === subset.length) {
-         return false;
-       }
-      return subset.every(value => {
-        return (superset.indexOf(value) >= 0);
+        if (0 === subset.length) {
+            return false;
+        }
+        return subset.every(value => {
+            return (superset.indexOf(value) >= 0);
         });
+    }
+
+    arrayCrossesArray(superset, subset) {
+        if (0 === subset.length) {
+            return false;
+        }
+        let flag = false;
+        subset.forEach(el => {
+            if(superset.indexOf(el) >= 0) {
+                flag = true;
+            }   
+        });
+        return flag;
     }
 }
