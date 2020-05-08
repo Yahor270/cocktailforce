@@ -32,14 +32,12 @@ export default class CocktailList extends LightningElement {
             return;
         }
         if(detail.strict) {
-            console.log('is strict');
             this.allCocktailWrapper.forEach(element => {
                 if(this.arrayContainsArray(detail.value, element.info.ingridients)) {
                     this.selectedCocktailWrapper.push(element);
                 }
             });
         } else {
-            console.log('non strict');
             this.allCocktailWrapper.forEach(element => {
                 if(this.arrayCrossesArray(element.info.ingridients, detail.value)) {
                     this.selectedCocktailWrapper.push(element);
