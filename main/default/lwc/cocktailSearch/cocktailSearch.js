@@ -9,7 +9,12 @@ export default class CocktailSearch extends LightningElement {
 
     handleClick() {
         this.isSelected = !this.isSelected;
-        const selectedEvent = new CustomEvent('selected', {detail: {value: this.value, strict: this.isSelected}});
+        const selectedEvent = new CustomEvent('selected', {
+            detail: {
+                value: this.value, 
+                strict: this.isSelected
+            }
+        });
         this.dispatchEvent(selectedEvent);
     }
 
@@ -17,7 +22,10 @@ export default class CocktailSearch extends LightningElement {
         var returnOptions = [];
         if(this.ingridients.data){
             this.ingridients.data.forEach(el =>{
-                returnOptions.push({label:el.Name , value:el.Name});
+                returnOptions.push({
+                    label:el.Name, 
+                    value:el.Name
+                });
             }); 
         }
         return returnOptions;
@@ -25,14 +33,24 @@ export default class CocktailSearch extends LightningElement {
 
     handleChange(e) {
         this.value = e.detail.value;
-        const selectedEvent = new CustomEvent('selected', {detail: {value: this.value, strict: this.isSelected}});
+        const selectedEvent = new CustomEvent('selected', {
+            detail: {
+                value: this.value, 
+                strict: this.isSelected
+            }
+        });
         this.dispatchEvent(selectedEvent);
     }
 
     clearList() {
         //this.template.querySelector('lightning-dual-listbox').value = []; //isn't necessary, next string does it
         this.value = [];
-        const selectedEvent = new CustomEvent('selected', {detail: {value: [], strict: this.isSelected}});
+        const selectedEvent = new CustomEvent('selected', {
+            detail: {
+                value: [], 
+                strict: this.isSelected
+            }
+        });
         this.dispatchEvent(selectedEvent);
     }
 }

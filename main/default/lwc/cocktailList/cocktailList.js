@@ -14,7 +14,10 @@ export default class CocktailList extends LightningElement {
             this.error = undefined;
             data.forEach(el => {
                 let picture = PICTURES + el.picture;
-                this.allCocktailWrapper.push({info: el, picture: picture});
+                this.allCocktailWrapper.push({
+                    info: el, 
+                    picture: picture
+                });
             });
             this.selectedCocktailWrapper = this.allCocktailWrapper;
         } else if (error) {
@@ -23,8 +26,7 @@ export default class CocktailList extends LightningElement {
         }
     };
     
-    @api
-    findCocktails(detail) {
+    @api findCocktails(detail) {
         if(detail.value.length > 0) {
             this.selectedCocktailWrapper = [];
         } else {
