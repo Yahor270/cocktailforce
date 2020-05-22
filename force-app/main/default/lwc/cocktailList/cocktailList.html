@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Cocktail list" icon-name="custom:custom48">
+        <template if:true={selectedCocktailWrapper}>
+            <div class="slds-m-right_x-large slds-scrollable" style="height:80vh">
+                <lightning-accordion class="cocktails-accordion"
+                allow-multiple-sections-open>
+                    <template for:each={selectedCocktailWrapper} for:item="cocktail">
+                        <lightning-accordion-section key={cocktail.info.Id} name= {cocktail.info.Name} label={cocktail.info.Name}>
+                            <div class="slds-media slds-media_responsive">
+                                <div class="slds-media__body">
+                                    <p>Contains:</p>
+                                    <lightning-formatted-rich-text
+                                        value={cocktail.info.Description}>
+                                    </lightning-formatted-rich-text> 
+                                </div>
+                                <div class="slds-media__figure slds-media__figure_reverse">
+                                    <img alt={cocktail.info.Name} 
+                                        src={cocktail.picture}
+                                        width="80"
+                                        height="150"
+                                        class="slds-m-right_x-large">
+                                </div>
+                            </div>
+                        </lightning-accordion-section>
+                    </template>
+                </lightning-accordion>
+            </div>     
+        </template>
+    <template if:true={error}>
+        Unable to load cocktail list
+    </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,50 @@
+<template>
+  <lightning-card title="Search-O-Cocktail" icon-name="custom:custom56">
+    <p class="slds-m-left_x-large">Check out what cocktails can be mixed with ingridients you have.</p>
+    <div class="slds-m-left_x-large slds-m-top_medium slds-m-bottom_medium">
+        <p>
+            <lightning-button label="About" variant="base" onclick={openmodal}></lightning-button>
+        </p>
+    </div>
+    <div class="slds-grid slds-wrap">
+      <div class="slds-large-size_1-of-2 slds-small-size_1-of-1">
+        <c-cocktail-search  onselected={processEvent}></c-cocktail-search>
+        <c-suggestion></c-suggestion>    
+      </div>
+      <div class="slds-large-size_1-of-2 slds-small-size_1-of-1">
+        <c-cocktail-list></c-cocktail-list>
+      </div>
+    </div>
+  </lightning-card>
+  <template if:true={openmodalwindow}>
+    <div>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+        aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="medium">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">What it's all about</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <center>   
+                        <h2>
+                            <b>Cocktailforce</b>
+                        </h2>
+                        <br/>
+                    </center>
+                        <p>Pick ingridients from the left and see what can be mixed with it.</p>
+                        <p>Strict mode implies that you have only selected items and cocktails only with these ingridients are displayed. </p>
+                        <div class="slds-m-top_medium slds-m-bottom_medium">
+                            <code>LWC used for building.</code>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</template>         
+</template>

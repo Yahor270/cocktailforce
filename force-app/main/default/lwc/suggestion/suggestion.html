@@ -1,0 +1,30 @@
+<template>
+    <lightning-card class="slds-m-right_xx-large" title="Suggest your recepy" icon-name="standard:record_create">
+        <div class="slds-grid slds-wrap slds-m-left_x-large slds-m-right_xx-large">
+            <div class="slds-large-size_8-of-12 slds-small-size_1-of-1">
+                <lightning-record-edit-form object-api-name="Suggestion__c" 
+                onsuccess={handleSuccess}
+                density="comfy">
+                <lightning-messages>
+                </lightning-messages>
+                <lightning-input-field field-name="Name">
+                </lightning-input-field>
+                <lightning-input-field field-name="Description__c">
+                </lightning-input-field>
+                    <lightning-button
+                        class="slds-m-top_small"
+                        type="submit"
+                        label="Suggest">
+                    </lightning-button>
+                </lightning-record-edit-form>
+                <!--<lightning-file-upload
+                        label="Attach picture, possible formats gif/jpg/png"
+                        name="fileUploader"
+                        accept={acceptedFormats}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}>
+                </lightning-file-upload>-->
+            </div>
+        </div>
+    </lightning-card>
+</template>
