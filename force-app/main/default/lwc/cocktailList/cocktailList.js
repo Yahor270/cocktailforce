@@ -1,9 +1,12 @@
 import { LightningElement, wire, api } from 'lwc';
+
 import getCocktailList from '@salesforce/apex/CocktailController.getCocktailList';
+
 import PICTURES from '@salesforce/resourceUrl/cocktails';
 
 export default class CocktailList extends LightningElement {
     searchKey = [];
+    isLoading = true;
     error;
     allCocktailWrapper;
     selectedCocktailWrapper;
@@ -14,9 +17,13 @@ export default class CocktailList extends LightningElement {
             this.error = undefined;
             data.forEach(el => {
                 let picture = PICTURES + el.picture;
-                this.allCocktailWrapper.push({info: el, picture: picture});
+                this.allCocktailWrapper.push({
+                    info: el, 
+                    picture: picture
+                });
             });
             this.selectedCocktailWrapper = this.allCocktailWrapper;
+            this.isLoading = false;
         } else if (error) {
             this.error = error;
             this.allCocktailWrapper = undefined;

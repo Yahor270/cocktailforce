@@ -6,10 +6,11 @@ export default class Container extends LightningElement {
     processEvent(event) {
         this.template.querySelector('c-cocktail-list').findCocktails(event.detail);
     }
-
+    
     openmodal() {
         this.openmodalwindow = true;
     }
+    
     closeModal() {
         this.openmodalwindow = false;
     }  
