@@ -1,14 +1,16 @@
 public with sharing class CocktailController {
+
     @AuraEnabled(cacheable=true)
     public static List<CocktailWrapper> getCocktailList() {
         List<CocktailWrapper> returnList = new List<CocktailWrapper>();
-        List<Cocktail__c> cocktails = [SELECT 
-            Name, 
+        List<Cocktail__c> cocktails = [
+            SELECT Name, 
             Description__c,
             Picture__c, 
             (SELECT Component__r.Name FROM CocktailItems__r) 
             FROM Cocktail__c
-            ORDER BY Name ASC NULLS LAST];
+            ORDER BY Name ASC NULLS LAST
+        ];
         for(Cocktail__c coc : cocktails) {
            List<String> items = new List<String>();
            for(CocktailItem__c cI : coc.CocktailItems__r) {
@@ -22,6 +24,7 @@ public with sharing class CocktailController {
             cocktail.Picture = coc.Picture__c;
             returnList.add(cocktail);
         }
+
         return returnList;
     }
 
@@ -33,6 +36,7 @@ public with sharing class CocktailController {
 
     @AuraEnabled(cacheable=true)
     public static String getHangerId() {
+
         return [SELECT Id FROM Cocktail__c LIMIT 1].Id;
     }
 
@@ -46,7 +50,6 @@ public with sharing class CocktailController {
         ];
         contLink.LinkedEntityId = recordId;
         update contLink;
-
     }
     
     public class CocktailWrapper {
